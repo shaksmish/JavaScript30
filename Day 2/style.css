@@ -14,7 +14,7 @@ body {
     display: flex;
     flex:1;
     flex-direction: column;
-    
+    min-height: 100vh;
     align-items: center;
 }
 
@@ -40,11 +40,11 @@ body {
 }
 
 .hand { 
+    width: 15%;
+    height: 6px;
     background: black; 
     position: absolute; 
     bottom: 200px;
-    width: 15%;
-    height: 6px;
     left: 35%;
     transform-origin: 100%;
     transform: rotate(90deg);
