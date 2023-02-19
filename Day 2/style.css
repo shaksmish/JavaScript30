@@ -39,27 +39,17 @@ body {
     transform: translateY(-3px);
 }
 
-.hand {
-    width: 15%;
-    height: 6px;
+.hand { 
     background: black; 
     position: absolute; 
-    left: 35%;
     bottom: 200px;
+    width: 15%;
+    height: 6px;
+    left: 35%;
     transform-origin: 100%;
     transform: rotate(90deg);
     transition: all 0.05s;
     transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+    
 }
 
-.second-hand {
-
-}
-
-.minute-hand {
-
-}
-
-.hour-hand {
-
-}
