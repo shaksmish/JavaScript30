@@ -1,0 +1,3 @@
+Array exercises
+
+The challenge is to work on arrays and experiment with various array methods in JS. All the outputs can be tested and verified on the console - so there is not much description on the page. However, the HTML file has instructions of small exercises that will be covered on in this challeneg. So they are easy to understand and follow along. Overall, it was really fun exercise and a pretty short project too.
