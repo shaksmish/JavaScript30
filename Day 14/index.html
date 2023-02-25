@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Reference VS Copy</title>
+  <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+<body>
+    <h3>Psst.. check console</h3>
+
+  <script>
+
+    // start with strings, numbers and booleans
+    // Let's say we have an array
+    const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
+
+
+    // and we want to make a copy of it.
+    // You might think we can just do something like this:
+
+    const team = players;
+    team[3] = 'Chico';
+    console.log(team, players); 
+
+    //expected output is -
+    //team = ['Wes', 'Sarah', 'Ryan', 'Chico'] players = ['Wes', 'Sarah', 'Ryan', 'Chico']
+    //WHY? because, team is a reference to the original array players and hence changing team[3] to 'Chico' also changes the players[3] to 'Chico'    
+    
+
+    // So, how do we fix this? We take a copy instead with either slice() or concat() methods.
+    
+    const team2 = players.slice();     //copies the values from players to team2
+    const team3 = [].concat(players);  //this also copies the values from players to team3
+
+
+    // or use the new ES6 Spread
+    const team4 = [...players];
+    team4[3] = 'Andy';   
+    console.log(team4, players);   //now, manipulating team4 will not manipulate players, i.e, when we update it, the original one isn't changed
+
+    //or use Array.from() method
+
+    const team5 = Array.from(players);   
+    console.log(team5, players);    //again, maniplutaing team5 will not change players
+
+    
+    // The same thing goes for objects, let's say we have a person object
+    // with Objects
+    const person = {
+      name: 'Wes Bos',
+      age: 90
+    };
+
+    // and think we make a copy:
+    const human = person;
+    human.age = 88;    //changes in human.age also changes person.age, because human is a reference to person and not a copy
+
+    // how do we take a copy instead using object.Assign() ?
+    const human2 = Object.assign({}, person, { age: 20});   //modifying human2 does not modify person
+
+
+    // We will hopefully soon see the object ...spread
+
+
+
+  </script>
+
+</body>
+</html>
