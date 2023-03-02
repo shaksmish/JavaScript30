@@ -6,6 +6,7 @@
   
 </head>
 <body>
+  <p class="heading">Paint this blank canvas!</p>
 <canvas id="draw" width="800" height="800"></canvas>
 <script>
 
@@ -21,24 +22,41 @@
 
     let isDrawing = false;
 
-    let lastX = 0;  //defines the last X corrdinate for the click
-    let lastY = 0;  //defines the last Y coordinate for the click
+    let lastX = 0;    //defines the last X corrdinate for the click
+    let lastY = 0;    //defines the last Y coordinate for the click
+    let hue = 0;    //this variable changes the colour of the stroke
+    let direction = true;   //
 
     function draw(e) {
       if (!isDrawing) return;   //stop the function from running when the mouse is not mouse down; in short - when user is not drawing, stop the function
       console.log(e);
+      ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
       ctx.beginPath();    //a method to create a new path
       ctx.moveTo(lastX, lastY);   //stroke will start from the values of lastX and lastY or (0,0)
       ctx.lineTo(e.offsetX, e.offsetY);   //adds a straight line to the sub-paths connecting the last point to the new (x,y) coordinates; these new coordinate values are coming from the actual event that is taking place, check more in the console.   
       ctx.stroke();
       [lastX, lastY] = [e.offsetX, e.offsetY];
-    
+
+      hue++;
+      if (hue >= 360) {
+        hue = 0;
+      }
+
+      if (ctx.lineWidth >= 100 || ctx.lineWidth <= 1) {
+          direction = !direction;     //if the lineWidth is greater than 100, then flip the direction of the stroke
+      }
+
+      if (direction) {
+        ctx.lineWidth++;    //this will increase the width of the stroke with every iteration
+      } else {
+        ctx.lineWidth--;
+      } 
     };
 
     canvas.addEventListener('mousedown', (e) => {
       isDrawing = true;          //when mouse is drawn, the draw() should run                
       [lastX, lastY] = [e.offsetX, e.offsetY];
-      
+
     
     });   
 
@@ -52,6 +70,20 @@
   html, body {
     margin: 0;
   }
+
+  .heading {
+    display: flex;
+    font-size: 30px;
+    background: -webkit-linear-gradient(rgb(208, 200, 200), rgb(46, 44, 175));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+    font-style: italic;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  
+
 </style>
 
 </body>
