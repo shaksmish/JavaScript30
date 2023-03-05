@@ -7,16 +7,36 @@
     <title>Key Sequence Detection</title>
 </head>
 <body>
+    <h2 class="title">Can you unclock the secret key? 🗝</h2>
+    <h3 class="sub-title">Psst..check the console</h3>
+
+<style>
+    .title {
+        font-size: 30px;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        margin: 5px;  
+    }
+    .sub-title {
+        font-size: 20px;
+        display: flex;
+        font-style: italic;
+        justify-content: center; 
+        margin: 0;
+    }
+</style>    
     
 <script>
+
     const secretCode1 = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"];
     const secretCode2 = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
     const secretCode3 = 'cool';
-    
+
     let pressedKey = [];
     //add an Event Listener to check the key pressed 
     //push the last key pressed into an empty array pressedKey
-    //check the if pressedKey includes one the secret codes
+    //check if the pressedKey includes one of the 3 secret codes
     //check only the last input values and match it with the code
     //if match is successful, display a message on console
 
@@ -25,13 +45,17 @@
         pressedKey.push(event.key);
         pressedKey.splice(-secretCode1.length - 1, pressedKey.length - secretCode1.length);
         
-        if (pressedKey.join('').includes(secretCode2)) {
+        if (pressedKey.join('') === secretCode1.join('')) {
+            console.log('activated secret code 1!!');
+        } else if (pressedKey.join('') === secretCode2.join('')) {
             console.log('activated secret code 2!!');
-        } else if (pressedKey.join('').includes(secretCode3)) {
+        } else if (pressedKey.join('') === secretCode3) {
             console.log('activated secret code 3!!');
         }
         console.log(pressedKey);
     });
+
+
 
 </script>
 
