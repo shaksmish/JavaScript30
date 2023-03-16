@@ -1,0 +1,19 @@
+html {
+box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    height: 40px;
+}
+
+.wrapper {
+    font-size: 20px;
+    max-width: 500px;
+}
